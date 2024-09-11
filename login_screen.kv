@@ -1,0 +1,79 @@
+<LoginScreen>:
+    # Nome da tela
+    name: 'login'
+
+    # Layout principal da tela
+    BoxLayout:
+        # Orientação do layout (vertical)
+        orientation: 'vertical'
+        # Preenchimento e espaçamento do layout
+        padding: dp(20)
+        spacing: dp(10)
+
+        # Título
+        MDLabel:
+            # Texto
+            text: "Bem-vindo!"
+            # Alinhamento do texto (centro)
+            halign: "center"
+            # Estilo de fonte (H5)
+            font_style: "H5"
+            # Tamanho relativo do label (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do label (baseada no tamanho do texto)
+            height: self.texture_size[1]
+
+        # Subtítulo
+        MDLabel:
+            # Texto
+            text: "Logue para continuar"
+            # Alinhamento do texto (centro)
+            halign: "center"
+            # Estilo de fonte (Subtitle1)
+            font_style: "Subtitle1"
+            # Tamanho relativo do label (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do label (baseada no tamanho do texto)
+            height: self.texture_size[1]
+
+        # Campo de texto para email
+        MDTextField:
+            # ID do campo de texto
+            id: email
+            # Texto de dica do campo de texto
+            hint_text: "Email"
+            # Tamanho relativo do campo de texto (60dp de altura)
+            size_hint_y: None
+            height: dp(60)
+
+        # Campo de texto para senha
+        MDTextField:
+            # ID do campo de texto
+            id: password
+            # Texto de dica do campo de texto
+            hint_text: "Senha"
+            # Campo de texto é de senha (mostra asteriscos em vez de texto)
+            password: True
+            # Tamanho relativo do campo de texto (60dp de altura)
+            size_hint_y: None
+            height: dp(60)
+
+        # Botão para fazer login
+        MDRectangleFlatButton:
+            # Texto do botão
+            text: "Entrar"
+            # Função a ser executada quando o botão é pressionado
+            on_release:
+                # Chamar a função fazer_login com os valores do email e senha
+                root.fazer_login(email.text, password.text)
+
+        # Botão para ir para a tela de cadastro
+        MDTextButton:
+            # Texto do botão
+            text: "Cadastre-se"
+            # Alinhamento do texto (centro)
+            halign: "center"
+            # Função a ser executada quando o botão é pressionado
+            on_release:
+                # Mudar para a tela de cadastro
+                root.manager.current = 'signup'
