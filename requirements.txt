@@ -1,0 +1,4 @@
+Kivy
+KivyMD
+sqlite
+bcrypt
