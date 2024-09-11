@@ -1,0 +1,55 @@
+<MenuScreen>:
+    # Variáveis para acessar os widgets
+    recipe_list: recipe_list
+    search_field: search_field
+    search_box: search_box
+
+    # Layout principal da tela
+    BoxLayout:
+        # Orientação do layout (vertical)
+        orientation: 'vertical'
+
+        # Barra de título
+        MDTopAppBar:
+            # Título da barra
+            title: 'Sabor&Inspiração'
+            # Itens de ação à esquerda (botão de logout)
+            left_action_items: [["logout", lambda x: app.dialogo_saida()]]
+            # Itens de ação à direita (botões de adicionar receita e pesquisar)
+            right_action_items: [["plus", lambda x: app.mostrar_tela_receita()], ["magnify", lambda x: root.alternar_pesquisa()]]
+
+        # Caixa de pesquisa
+        BoxLayout:
+            # ID da caixa de pesquisa
+            id: search_box
+            # Opacidade da caixa de pesquisa (inicialmente oculta)
+            opacity: 0
+            # Tamanho relativo da caixa de pesquisa (ajustado automaticamente)
+            size_hint_y: None
+            # Altura da caixa de pesquisa (baseada no tamanho do conteúdo)
+            height: self.minimum_height
+
+            # Campo de texto de pesquisa
+            MDTextField:
+                # ID do campo de texto
+                id: search_field
+                # Texto de dica do campo de texto
+                hint_text: "Buscar receita"
+                # Função a ser executada quando o texto do campo de texto muda
+                on_text: app.pesquisar_receitas(self.text)
+                # Tamanho relativo do campo de texto (80% da largura)
+                size_hint_x: 0.8
+
+            # Botão de fechar a caixa de pesquisa
+            MDIconButton:
+                # Ícone do botão
+                icon: "close"
+                # Função a ser executada quando o botão é pressionado
+                on_release: root.limpar_pesquisa()
+
+        # Scroll view para a lista de receitas
+        ScrollView:
+            # Lista de receitas
+            MDList:
+                # ID da lista de receitas
+                id: recipe_list

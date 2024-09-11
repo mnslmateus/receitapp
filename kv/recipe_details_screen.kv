@@ -1,0 +1,59 @@
+<RecipeDetailsScreen>:
+    # Layout principal da tela
+    BoxLayout:
+        # Orientação do layout (vertical)
+        orientation: 'vertical'
+
+        # Barra de título
+        MDTopAppBar:
+            # ID da barra de título
+            id: toolbar
+            # Título da barra (é atualizado com o nome da receita)
+            title: ''
+            # Itens de ação à esquerda (botão de voltar para o menu)
+            left_action_items: [["arrow-left", lambda x: app.voltar_para_o_menu()]]
+            # Itens de ação à direita (apagar a receita)
+            right_action_items: [["trash-can", lambda x: app.excluir_receita()]]
+
+        # Scroll view para a lista de detalhes da receita
+        ScrollView:
+            # Lista de detalhes da receita
+            MDList:
+                # Título "Descrição"
+                OneLineListItem:
+                    # Texto do título
+                    text: "[b]Descrição[/b]"
+                    # Estilo de fonte (H5)
+                    font_style: "H5"
+                    # Alinhamento do texto (centro)
+                    halign: "center"
+                # Label de descrição da receita
+                OneLineListItem:
+                    # ID do label
+                    id: description_label
+                    # Texto (será atualizado dinamicamente com a descrição da receita)
+                    text: ''
+                # Título "Ingredientes"
+                OneLineListItem:
+                    # Texto do título
+                    text: "[b]Ingredientes[/b]"
+                    # Estilo de fonte (H5)
+                    font_style: "H5"
+                    # Alinhamento do texto (centro)
+                    halign: "center"
+                # Lista de ingredientes
+                MDList:
+                    # ID da lista de ingredientes
+                    id: ingredients_list
+                # Título "Instruções"
+                OneLineListItem:
+                    # Texto do título
+                    text: "[b]Instruções[/b]"
+                    # Estilo de fonte (H5)
+                    font_style: "H5"
+                    # Alinhamento do texto (centro)
+                    halign: "center"
+                # Lista de instruções
+                MDList:
+                    # ID da lista de instruções
+                    id: instructions_list

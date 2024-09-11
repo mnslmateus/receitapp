@@ -1,0 +1,64 @@
+<WelcomeScreen>:
+    # Nome da tela
+    name: 'welcome'
+
+    # Layout principal da tela
+    BoxLayout:
+        # Orientação do layout (vertical)
+        orientation: 'vertical'
+
+        # Imagem de fundo
+        Image:
+            # Fonte da imagem
+            source: 'imagens/inicio.png'
+            # Tamanho da imagem (40% da altura da tela)
+            size_hint_y: 0.4
+            # Posição da imagem (centro da tela)
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+
+        # Título
+        MDLabel:
+            # Texto
+            text: "Sabor&Inspiração"
+            # Alinhamento do texto (centro)
+            halign: "center"
+            # Estilo de fonte (H4)
+            font_style: "H4"
+            # Texto em negrito
+            bold: True
+            # Tamanho (ajustado automaticamente)
+            size_hint_y: None
+            # Altura (baseada no tamanho do texto)
+            height: self.texture_size[1]
+            # Posição (centro da tela)
+            pos_hint: {"center_x": 0.5}
+
+        # Subtítulo
+        MDLabel:
+            # Texto
+            text: "Seu melhor aplicativo de receitas."
+            # Alinhamento do texto
+            halign: "center"
+            # Estilo de fonte
+            font_style: "Subtitle1"
+            # Tamanho (ajustado automaticamente)
+            size_hint_y: None
+            # Altura (baseada no tamanho do texto)
+            height: self.texture_size[1]
+            # Posição (centro da tela)
+            pos_hint: {"center_x": 0.5}
+
+        # Botão de seta para ir para a tela de login
+        MDIconButton:
+            # Ícone do botão
+            icon: "arrow-right-circle"
+            # Posição do botão (centro da tela)
+            pos_hint: {"center_x": 0.5}
+            # Tamanho da fonte do botão
+            user_font_size: "64sp"
+            # Função a ser executada quando o botão é pressionado
+            on_release:
+                # Transição para a tela de login
+                root.manager.transition.direction = "left"
+                # Mudar para a tela de login
+                root.manager.current = 'login'

@@ -1,0 +1,76 @@
+<SignUpScreen>:
+    # Nome da tela
+    name: 'signup'
+
+    # Layout principal da tela
+    BoxLayout:
+        # Orientação do layout
+        orientation: 'vertical'
+        # Preenchimento e espaçamento entre os widgets
+        padding: dp(20)
+        spacing: dp(10)
+
+        # Título da tela
+        MDLabel:
+            text: "Cadastre-se"
+            halign: "center"
+            # Estilo de fonte (H5)
+            font_style: "H5"
+            # Tamanho (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do label (baseada no tamanho do texto)
+            height: self.texture_size[1]
+
+        # Campo de texto para o nome de cadastro
+        MDTextField:
+            id: nome_cadastro
+            hint_text: "Nome"
+            # Tamanho do campo de texto (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do campo de texto (60 dp)
+            height: dp(60)
+
+        # Campo de texto para o email de cadastro
+        MDTextField:
+            id: email_cadastro
+            hint_text: "Email"
+            # Tamanho do campo de texto (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do campo de texto
+            height: dp(60)
+
+        # Campo de texto para a senha de cadastro
+        MDTextField:
+            id: senha_cadastro
+            hint_text: "Senha"
+            # Campo de texto é uma senha (para ocultar o texto)
+            password: True
+            # Tamanho do campo de texto (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do campo de texto
+            height: dp(60)
+
+        # Campo de texto para confirmar a senha de cadastro
+        MDTextField:
+            id: confirmar_senha
+            hint_text: "Confirme a senha"
+            # Campo de texto é uma senha (para ocultar o texto)
+            password: True
+            # Tamanho do campo de texto (ajustado automaticamente)
+            size_hint_y: None
+            # Altura do campo de texto (60 dp)
+            height: dp(60)
+
+        # Botão de registrar
+        MDRectangleFlatButton:
+            # Texto do botão
+            text: "Registrar"
+            # Função a ser executada quando o botão é pressionado
+            on_release: root.cadastrar(nome_cadastro.text, email_cadastro.text, senha_cadastro.text, confirmar_senha.text)
+
+        # Botão de voltar ao login
+        MDTextButton:
+            # Texto do botão
+            text: "Voltar ao login"
+            # Função a ser executada quando o botão é pressionado
+            on_release: root.manager.current = 'login'

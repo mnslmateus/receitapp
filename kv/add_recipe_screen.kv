@@ -1,0 +1,83 @@
+<AddRecipeScreen>:
+    # Nome da tela
+    name: 'add_recipe'
+
+    # Conectando os IDs aos atributos
+    receita_titulo: receita_titulo
+    receita_descricao: receita_descricao
+    receita_ingredientes: receita_ingredientes
+    receita_instrucoes: receita_instrucoes
+
+    # Layout principal da tela
+    BoxLayout:
+        # Orientação do layout (vertical)
+        orientation: 'vertical'
+
+        # Barra de título superior
+        MDTopAppBar:
+            # Título da barra de título
+            title: "Adicionar Receita"
+            # Botão de voltar para o menu
+            left_action_items: [["arrow-left", lambda x: app.voltar_para_o_menu()]]
+
+        # Scroll view para permitir rolagem
+        ScrollView:
+            # Layout interno do scroll view
+            BoxLayout:
+                # Orientação do layout interno (vertical)
+                orientation: 'vertical'
+                # Preenchimento e espaçamento do layout interno
+                padding: dp(20)
+                spacing: dp(20)
+                # Altura do layout interno (ajustada automaticamente)
+                size_hint_y: None
+                height: self.minimum_height
+
+                # Campo de texto para título da receita
+                MDTextField:
+                    # ID do campo de texto
+                    id: receita_titulo
+                    # Texto de dica do campo de texto
+                    hint_text: "Título da Receita"
+                    # Campo de texto é obrigatório
+                    required: True
+
+                # Campo de texto para descrição da receita
+                MDTextField:
+                    # ID do campo de texto
+                    id: receita_descricao
+                    # Texto de dica do campo de texto
+                    hint_text: "Descrição"
+                    # Campo de texto é multilinha
+                    multiline: True
+                    # Campo de texto é obrigatório
+                    required: True
+
+                # Campo de texto para ingredientes da receita
+                MDTextField:
+                    # ID do campo de texto
+                    id: receita_ingredientes
+                    # Texto de dica do campo de texto
+                    hint_text: "Ingredientes (um por linha)"
+                    # Campo de texto é multilinha
+                    multiline: True
+                    # Campo de texto é obrigatório
+                    required: True
+
+                # Campo de texto para instruções da receita
+                MDTextField:
+                    # ID do campo de texto
+                    id: receita_instrucoes
+                    # Texto de dica do campo de texto
+                    hint_text: "Passo a Passo (um por linha)"
+                    # Campo de texto é multilinha
+                    multiline: True
+                    # Campo de texto é obrigatório
+                    required: True
+
+                # Botão para salvar a receita
+                MDRectangleFlatButton:
+                    # Texto do botão
+                    text: "Salvar Receita"
+                    # Função a ser executada quando o botão é pressionado
+                    on_release: root.salvar_receita()
